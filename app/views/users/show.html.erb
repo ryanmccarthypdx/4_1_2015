@@ -1,2 +1,4 @@
-<h2><%= @user.email %></h2>
+<h1>Welcome to PieMessage!</h1>
+<h3><em>Your one stop shop for sending pie-related MMS and SMS!</em></h3>
+<h3>You are currently logged in as: <%= current_user.email %></h3>
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>

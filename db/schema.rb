@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401163453) do
+ActiveRecord::Schema.define(version: 20150401185524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "contact_id"
+    t.string  "body"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
