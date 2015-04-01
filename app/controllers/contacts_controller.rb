@@ -18,15 +18,16 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to authenticated_root_path, notice: 'Contact was successfully created.' }
-        format.js
-      else
-        format.html { render :new }
+    if @contact.save
+      flash[:notice] = 'Contact was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to authenticated_root_path }
         format.js
       end
+    else
+      flash[:alert] = "Something went wrong!"
     end
+
   end
 
   # def update
