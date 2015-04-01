@@ -2,17 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, :except => :index do
-  end
+  resources :users, :except => :index
 
   devise_scope :user do
-   authenticated :user do
-     root 'users#show', as: :authenticated_root
-   end
+    authenticated :user do
+      root 'users#show', as: :authenticated_root
+    end
 
-   unauthenticated do
-     root 'devise/sessions#new', as: :unauthenticated_root
-   end
- end
-
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 end
