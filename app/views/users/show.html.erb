@@ -2,3 +2,10 @@
 <h3><em>Your one stop shop for sending pie-related MMS and SMS!</em></h3>
 <h3>You are currently logged in as: <%= current_user.email %></h3>
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+
+<h3>Add a new contact:</h3>
+<%= render "contacts/form" %>
+
+<% @contacts.each do |contact| %>
+  <%= render contact %>
+<% end %>
