@@ -17,6 +17,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+    @contact.user_id = current_user.id
     if @contact.save
       flash[:notice] = 'Contact was successfully created.'
       redirect_to authenticated_root_path

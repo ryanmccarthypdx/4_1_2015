@@ -23,6 +23,7 @@ group :development, :test do
   gem 'pry'
   gem 'poltergeist'
   gem 'quiet_assets'
+  gem 'better_errors'
 end
 
 group :test do

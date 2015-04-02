@@ -5,13 +5,13 @@ class Message < ActiveRecord::Base
 
   before_create :send_message
 
-  def initialize(attributes)
-    @contact_id = Contact.find_by(:number => attributes['to'])
-    @user_id = current_user.id
-    @body = attributes['body']
-  end
+  # def initialize
+  #   @contact_id = Contact.find_by(:number => attributes['to'])
+  #   @user_id = attributes.user_id
+  #   @body = attributes['body']
+  # end
 
-private
+# private
   def send_message
     response = RestClient::Request.new(
       :method => :post,
