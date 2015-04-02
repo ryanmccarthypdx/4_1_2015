@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :contact
 
-  before_create :send_message
+  # before_create :send_message
 
   # def initialize
   #   @contact_id = Contact.find_by(:number => attributes['to'])
