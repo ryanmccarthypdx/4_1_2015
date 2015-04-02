@@ -2,7 +2,15 @@ class MessagesController < ApplicationController
   def new
     @contact = Contact.find_by(number: params['to'])
     @message = Message.new
-    
+    @contacts = Contact.all
+    @formatted_contacts = []
+    @contacts.each do |contact|
+      individual_formatted_contact = []
+      individual_formatted_contact.push(contact.nickname)
+      individual_formatted_contact.push(contact.id)
+      @formatted_contacts.push(individual_formatted_contact)
+    end
+
   end
 
   def create

@@ -19,8 +19,8 @@ class Message < ActiveRecord::Base
       :user => ENV['TWILIO_ACCOUNT_SID'],
       :password => ENV['TWILIO_AUTH_TOKEN'],
       :payload => { :Body => body,
-                    :To => to,
-                    :From => from }
+                    :To => Contact.find(self.contact_id).number,
+                    :From => ENV['USER_NUMBER'] }
     ).execute
   end
 

@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      flash[:notice] = 'Contact was successfully created.'
+      flash[:notice] = 'Contact was successfully updated.'
       redirect_to authenticated_root_path
     else
       flash[:alert] = "Something went wrong!"

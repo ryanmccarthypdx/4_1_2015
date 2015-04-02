@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :contact do
-    nickname 'testington'
-    number '1112223333'
+    nickname 'Lee Jorgensen'
+    number '7073371418'
   end
 end
