@@ -29,4 +29,20 @@ describe "the contact-related functionality" do
     expect(page).to have_no_content "Chris-toper Joy Webb" || "uccess"
   end
 
+  it "deletes a contact" do
+    contact = FactoryGirl.create(:contact)
+    visit authenticated_root_path
+    click_on 'delete'
+    expect(page).to have_content 'demolished'
+    expect(page).to have_no_content 'testington'
+  end
+
+  it "edits a contact" do
+    contact = FactoryGirl.create(:contact)
+    visit authenticated_root_path
+    click_on 'edit'
+    fill_in "Nickname", :with => "totesmcgoats"
+    click_on "Update Contact"
+    expect(page).to have_content 'updated' && "totesmcgoats"
+  end
 end

@@ -19,36 +19,30 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       flash[:notice] = 'Contact was successfully created.'
-      respond_to do |format|
-        format.html { redirect_to authenticated_root_path }
-        format.js
-      end
+      redirect_to authenticated_root_path
     else
       flash[:alert] = "Something went wrong!"
       redirect_to authenticated_root_path
     end
-
   end
 
-  # def update
-  #   respond_to do |format|
-  #     if @contact.update(contact_params)
-  #       format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @contact }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @contact.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #
-  # def destroy
-  #   @contact.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update(contact_params)
+      flash[:notice] = 'Contact was successfully created.'
+      redirect_to authenticated_root_path
+    else
+      flash[:alert] = "Something went wrong!"
+      render :edit
+    end
+  end
+
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    flash[:alert] = 'Contact demolished.'
+    redirect_to authenticated_root_path
+  end
 
   private
     def set_contact

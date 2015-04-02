@@ -1,4 +1,4 @@
 <div>
   <%= contact.nickname %>
-  <%= contact.number %>
+  <%= contact.number %> | <%= link_to 'edit', edit_contact_path(contact) %> | <%= link_to 'delete', contact, method: :delete %>
 </div>
