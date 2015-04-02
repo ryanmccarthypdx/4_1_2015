@@ -45,4 +45,15 @@ describe "the contact-related functionality" do
     click_on "Update Contact"
     expect(page).to have_content 'updated' && "totesmcgoats"
   end
+
+  it "throws errors if no number is entered when updating" do
+    contact = FactoryGirl.create(:contact)
+    visit user_path(user)
+    click_on 'edit'
+    fill_in "Nickname", :with => "totesmcgoats"
+    fill_in "Number", :with => ""
+    click_on "Update Contact"
+    expect(page).to have_content 'Something went wrong'
+
+  end
 end
