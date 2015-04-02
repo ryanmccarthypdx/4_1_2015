@@ -17,7 +17,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-
     if @contact.save
       flash[:notice] = 'Contact was successfully created.'
       respond_to do |format|
@@ -26,6 +25,7 @@ class ContactsController < ApplicationController
       end
     else
       flash[:alert] = "Something went wrong!"
+      redirect_to authenticated_root_path
     end
 
   end
